@@ -1,45 +1,44 @@
 {
   "name": "x-intel-mcp",
-  "version": "0.2.0",
-  "description": "Zero-fee X/Twitter & social intelligence MCP server for AI agents (Claude, Cursor, Pi).",
-  "type": "module",
+  "version": "0.2.1",
+  "description": "High-performance zero-auth Twitter/X intelligence, crypto cashtag analyzer, and sentiment scoring MCP server for Claude Code, Cursor, Pi, and LLMs.",
   "main": "dist/server.js",
   "bin": {
-    "x-intel-mcp": "dist/cli.js"
+    "x-intel-mcp": "./dist/cli.js"
   },
-  "files": [
-    "dist",
-    "README.md",
-    "README_RU.md",
-    "README_ZH.md",
-    "LICENSE"
-  ],
+  "type": "module",
   "scripts": {
     "build": "bun build src/server.ts --outdir dist --target node && bun build src/cli.ts --outdir dist --target node && chmod +x dist/cli.js",
+    "start": "node dist/server.js",
     "dev": "bun run src/server.ts",
-    "start": "node dist/server.js"
+    "test": "bun test"
   },
   "keywords": [
     "mcp",
-    "mcp-server",
     "model-context-protocol",
     "twitter",
     "x",
-    "ai",
-    "agents",
-    "claude",
+    "claude-code",
     "cursor",
-    "pi",
-    "scraper",
-    "social-intelligence"
+    "ai-agents",
+    "crypto-sentiment",
+    "sentiment-analysis"
   ],
-  "author": "Ali Cent <sosal123tyu1>",
+  "author": "sosal123tyu1 (Ali Cent)",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sosal123tyu1/x-intel-mcp.git"
   },
+  "bugs": {
+    "url": "https://github.com/sosal123tyu1/x-intel-mcp/issues"
+  },
+  "homepage": "https://github.com/sosal123tyu1/x-intel-mcp#readme",
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.0.4"
+    "@modelcontextprotocol/sdk": "^1.0.1",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.1"
   }
 }
