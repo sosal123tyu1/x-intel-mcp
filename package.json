@@ -1,0 +1,34 @@
+{
+  "name": "x-intel-mcp",
+  "version": "0.1.0",
+  "description": "Zero-fee X/Twitter social intelligence MCP server for AI agents (Claude, Cursor, Pi).",
+  "type": "module",
+  "main": "dist/server.js",
+  "bin": {
+    "x-intel-mcp": "dist/cli.js"
+  },
+  "scripts": {
+    "build": "bun build src/server.ts --outdir dist --target node",
+    "dev": "bun run src/server.ts",
+    "test": "bun test",
+    "start": "node dist/server.js"
+  },
+  "keywords": [
+    "mcp",
+    "x",
+    "twitter",
+    "ai",
+    "agent",
+    "claude",
+    "cursor",
+    "pi"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "^5.6.0"
+  }
+}
