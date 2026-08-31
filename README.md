@@ -1,63 +1,50 @@
+# x-intel-mcp ⚡ Zero-Auth Twitter/X Intelligence Engine for AI Agents
+
 <div align="center">
 
-# ⚡ x-intel-mcp
+[![NPM Version](https://img.shields.io/npm/v/x-intel-mcp?color=blue&style=for-the-badge&logo=npm)](https://www.npmjs.com/package/x-intel-mcp)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreen?style=for-the-badge&logo=githubactions)](https://github.com/sosal123tyu1/x-intel-mcp/actions)
+[![MCP Standard](https://img.shields.io/badge/MCP-Standard%201.0-blueviolet?style=for-the-badge)](https://modelcontextprotocol.io)
+[![Twitter Stars](https://img.shields.io/github/stars/sosal123tyu1/x-intel-mcp?style=for-the-badge&logo=github)](https://github.com/sosal123tyu1/x-intel-mcp/stargazers)
 
-**Zero-fee X/Twitter & Social Intelligence for AI Agents**  
-*Model Context Protocol (MCP) Server for Claude Desktop, Cursor, Pi, and any MCP client.*
+**A high-performance Model Context Protocol (MCP) server providing zero-auth Twitter/X intelligence, crypto ticker cashtag analysis (`$SOL`, `$BTC`), whale tracking, and AI-driven sentiment scoring directly into Claude Code, Cursor, Pi, and Windsurf.**
 
-[![NPM Version](https://img.shields.io/npm/v/x-intel-mcp?style=flat-square&color=indigo)](https://www.npmjs.com/package/x-intel-mcp)
-[![NPM Downloads](https://img.shields.io/npm/dm/x-intel-mcp?style=flat-square&color=blue)](https://www.npmjs.com/package/x-intel-mcp)
-[![License: MIT](https://img.shields.io/badge/License-MIT-emerald.svg?style=flat-square)](LICENSE)
-[![MCP Compatible](https://img.shields.io/badge/MCP-1.0-8A2BE2.svg?style=flat-square)](https://modelcontextprotocol.io)
-[![Runtime: Node / Bun](https://img.shields.io/badge/Runtime-Node%20%7C%20Bun-orange.svg?style=flat-square)](https://bun.sh)
-[![Zero Config](https://img.shields.io/badge/API_Keys-None_Required-success.svg?style=flat-square)](#)
-
-[English](README.md) • [Русский](README_RU.md) • [中文](README_ZH.md)
+[English](README.md) | [Русский](README_RU.md) | [中文](README_ZH.md)
 
 </div>
 
 ---
 
-## 🚀 Why x-intel-mcp?
+## ⚡ Why x-intel-mcp?
 
-X/Twitter official API starts at **$100/mo** with heavy rate limits. Most AI agents just need to read public sentiment, recent developer discussions, or search keywords without passing expensive API keys into every prompt.
+Standard Twitter API v2 costs **$100–$5,000/month** and requires enterprise developer accounts. 
 
-`x-intel-mcp` is a lightweight, zero-configuration MCP server running locally via `stdio`. It connects your favorite AI agent directly to live public posts without authentication using multi-mirror syndication fallback.
+`x-intel-mcp` gives AI agents direct, structured access to live Twitter search streams, viral tweets, cashtag sentiment, and influencer alpha feeds **without requiring any API key or subscription**.
+
+### 🌟 Key Capabilities
+
+- 🔍 **Live Query Search (`x_search`)**: Fetch recent viral tweets, quotes, and threads on any topic.
+- 🪙 **Crypto Cashtag Analyzer (`x_crypto_sentiment`)**: Scrape live sentiment on `$SOL`, `$BTC`, `$ETH`, meme coins, and calculate bullish/bearish ratio.
+- 👤 **Influencer Feed Extractor (`x_user_feed`)**: Extract full timelines and alpha calls from specified Twitter accounts.
+- ⚡ **Zero Setup**: Ready to use out of the box via `npx x-intel-mcp` or `bunx x-intel-mcp`.
+- 🔌 **Universal MCP Support**: 100% compatible with Claude Code, Cursor, Windsurf, Pi Agent, and LibreChat.
 
 ---
 
-## ✨ Features
+## 🚀 Quick Setup (1 Minute)
 
-- 🆓 **Zero API Keys Required** — Works out-of-the-box via public syndication endpoints and Nitter instances.
-- ⚡ **Sub-second Responses** — Fast local runtime (Bun or Node.js).
-- 🧩 **100% MCP Standard** — Drop-in compatibility with **Claude Desktop**, **Cursor IDE**, **Pi**, and **Windsurf**.
-- 🛡️ **Privacy-First** — Runs entirely on your local machine; no intermediary proxies recording your queries.
+### 1. Claude Code CLI
 
----
-
-## 📦 Quickstart
-
-### Run directly with `npx` (No global install required)
+Add `x-intel-mcp` to your global Claude Code configuration:
 
 ```bash
-npx x-intel-mcp
+claude mcp add x-intel -- npx x-intel-mcp
 ```
 
-### Or using `bunx`
+### 2. Claude Desktop App
 
-```bash
-bunx x-intel-mcp
-```
-
----
-
-## ⚙️ Claude Desktop Setup
-
-Add the following to your `claude_desktop_config.json`:
-
-* **macOS:** `~/Library/Application Support/Claude/claude_desktop_config.json`  
-* **Windows:** `%APPDATA%\Claude\claude_desktop_config.json`  
-* **Linux:** `~/.config/Claude/claude_desktop_config.json`
+Add to your `claude_desktop_config.json`:
 
 ```json
 {
@@ -70,64 +57,63 @@ Add the following to your `claude_desktop_config.json`:
 }
 ```
 
-Restart Claude Desktop, and the tools will automatically appear in your chat interface.
+### 3. Cursor IDE / Windsurf
+
+Add in Cursor Settings -> Features -> MCP Servers:
+
+- **Name**: `x-intel`
+- **Type**: `command`
+- **Command**: `npx -y x-intel-mcp`
 
 ---
 
-## 🛠️ Available Tools
+## 🛠 Available MCP Tools
 
-### 1. `x_search`
-Search live public posts on X by keyword, query, or hashtag.
-
-```json
-{
-  "query": "Rust MCP server",
-  "limit": 10
-}
-```
-
-### 2. `x_profile`
-Fetch the latest public posts from a specific X user handle.
-
-```json
-{
-  "handle": "karpathy",
-  "limit": 5
-}
-```
+| Tool Name | Arguments | Description |
+| :--- | :--- | :--- |
+| `x_search` | `query` (string), `limit` (number) | Search real-time tweets, engagements, and links by keyword. |
+| `x_crypto_sentiment` | `ticker` (string, e.g. `SOL`), `limit` (number) | Aggregate live cashtag posts and calculate net sentiment score. |
+| `x_user_feed` | `username` (string), `limit` (number) | Stream latest tweets and replies from any public Twitter profile. |
 
 ---
 
-## 🏗️ Architecture
+## 📊 Example Agent Prompts
 
-```
-[ AI Agent (Claude / Cursor / Pi) ]
-               │
-               ▼  (stdio / JSON-RPC)
-       [ x-intel-mcp ]
-               │
-       ┌───────┴───────┐
-       ▼               ▼
-[ Syndication API ]  [ Nitter RSS ]
-       │               │
-       └───────┬───────┘
-               ▼
-   [ Structured JSON Output ]
-```
+Once installed, simply ask your agent in natural language:
+
+> *"Analyze current Twitter sentiment on $SOL for the past 2 hours and summarize key narratives."*
+
+> *"What are the top 5 tweets regarding the latest Anthropic Claude 3.7 release?"*
+
+> *"Check the recent tweets from @vitalikbuterin and summarize his thoughts on L2 scaling."*
 
 ---
 
-## 💻 Local Development
+## 💻 CLI Direct Execution
+
+You can also run `x-intel-mcp` standalone from the command line:
 
 ```bash
-git clone https://github.com/sosal123tyu1/x-intel-mcp.git
-cd x-intel-mcp
-bun install
-bun run dev
+# Direct search
+npx x-intel-mcp search "Claude 3.7"
+
+# Analyze crypto sentiment
+npx x-intel-mcp sentiment "SOL"
+
+# Read user profile
+npx x-intel-mcp user "sama"
 ```
+
+---
+
+## 🤝 Contributing & Star History
+
+We welcome pull requests! Star the repository if this helped your AI workflow:
+
+[![Star History Chart](https://api.star-history.com/svg?repos=sosal123tyu1/x-intel-mcp&type=Date)](https://star-history.com/#sosal123tyu1/x-intel-mcp&Date)
 
 ---
 
 ## 📄 License
 
-[MIT](LICENSE) © 2026 [Ali Cent (sosal123tyu1)](https://github.com/sosal123tyu1)
+MIT © [Ali Cent](https://github.com/sosal123tyu1)
