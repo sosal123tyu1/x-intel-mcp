@@ -1,63 +1,50 @@
+# x-intel-mcp ⚡ 面向 AI Agent 的免 API 密钥 Twitter/X 实时情报与情绪分析引擎
+
 <div align="center">
 
-# ⚡ x-intel-mcp
+[![NPM Version](https://img.shields.io/npm/v/x-intel-mcp?color=blue&style=for-the-badge&logo=npm)](https://www.npmjs.com/package/x-intel-mcp)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreen?style=for-the-badge&logo=githubactions)](https://github.com/sosal123tyu1/x-intel-mcp/actions)
+[![MCP Standard](https://img.shields.io/badge/MCP-Standard%201.0-blueviolet?style=for-the-badge)](https://modelcontextprotocol.io)
+[![Twitter Stars](https://img.shields.io/github/stars/sosal123tyu1/x-intel-mcp?style=for-the-badge&logo=github)](https://github.com/sosal123tyu1/x-intel-mcp/stargazers)
 
-**面向 AI Agent 的免费 X/Twitter 社交情报 MCP 服务器**  
-*适用于 Claude Desktop、Cursor、Pi 以及任何 MCP 客户端的 Model Context Protocol 服务器。*
+**高性能 Model Context Protocol (MCP) 服务，为 Claude Code、Cursor、Pi 和 Windsurf 等 AI 智能体提供零配置 Twitter/X 搜索、加密代币行情标签分析 (`$SOL`, `$BTC`) 和社交情绪评分。**
 
-[![NPM Version](https://img.shields.io/npm/v/x-intel-mcp?style=flat-square&color=indigo)](https://www.npmjs.com/package/x-intel-mcp)
-[![NPM Downloads](https://img.shields.io/npm/dm/x-intel-mcp?style=flat-square&color=blue)](https://www.npmjs.com/package/x-intel-mcp)
-[![License: MIT](https://img.shields.io/badge/License-MIT-emerald.svg?style=flat-square)](LICENSE)
-[![MCP Compatible](https://img.shields.io/badge/MCP-1.0-8A2BE2.svg?style=flat-square)](https://modelcontextprotocol.io)
-[![Runtime: Node / Bun](https://img.shields.io/badge/Runtime-Node%20%7C%20Bun-orange.svg?style=flat-square)](https://bun.sh)
-[![Zero Config](https://img.shields.io/badge/API_Keys-无需密钥-success.svg?style=flat-square)](#)
-
-[English](README.md) • [Русский](README_RU.md) • [中文](README_ZH.md)
+[English](README.md) | [Русский](README_RU.md) | [中文](README_ZH.md)
 
 </div>
 
 ---
 
-## 🚀 为什么选择 x-intel-mcp？
+## ⚡ 为什么选择 x-intel-mcp？
 
-X/Twitter 官方 API 每月起步价为 **$100**，并且有严格的调用频率限制。大多数 AI Agent 仅需检索公开讨论、开发者动态或关键词推文，无需为每个 Prompt 购买昂贵的 API Key。
+官方 Twitter API v2 每月费用高达 **$100 至 $5,000**，且需要繁琐的企业开发者认证。
 
-`x-intel-mcp` 是一个轻量级本地 MCP 服务器，通过 `stdio` 协议运行。它能将您的 AI 助手直接连接到公开的社交情报源，无需任何身份验证，并支持多镜像节点故障转移。
+`x-intel-mcp` 让您的 AI 智能体能够直接获得推特实时搜索流、热点推文、加密代币情绪和 KOL 动态，**无需任何 API 密钥或付费订阅**。
+
+### 🌟 核心特性
+
+- 🔍 **实时搜索 (`x_search`)**：按关键词即时获取最新推文、互动与讨论。
+- 🪙 **加密情绪分析 (`x_crypto_sentiment`)**：抓取 `$SOL`、`$BTC`、`$ETH` 等代币标签并计算多空情绪指数。
+- 👤 **博主推文提取 (`x_user_feed`)**：抓取任意公开账号的最新推文与回复。
+- ⚡ **零配置启动**：支持 `npx x-intel-mcp` 或 `bunx x-intel-mcp` 一键运行。
+- 🔌 **通用 MCP 支持**：完美兼容 Claude Code、Cursor、Windsurf、Pi 等主流智能体。
 
 ---
 
-## ✨ 核心特性
+## 🚀 快速开始
 
-- 🆓 **完全免费** — 无需 API Key，利用公开聚合接口检索。
-- ⚡ **极速响应** — 基于轻量级 Bun / Node.js 运行时。
-- 🧩 **标准 MCP 协议** — 开箱即用支持 **Claude Desktop**, **Cursor**, **Pi**, **Windsurf**。
-- 🛡️ **本地隐私** — 完全运行在本地，绝不上报查询内容。
+### 1. Claude Code CLI
 
----
-
-## 📦 快速上手
-
-### 使用 `npx` 运行（无需全局安装）
+添加至 Claude Code 配置：
 
 ```bash
-npx x-intel-mcp
+claude mcp add x-intel -- npx x-intel-mcp
 ```
 
-### 或使用 `bunx`
+### 2. Claude Desktop
 
-```bash
-bunx x-intel-mcp
-```
-
----
-
-## ⚙️ Claude Desktop 配置
-
-将以下内容添加到您的 `claude_desktop_config.json` 中：
-
-* **macOS:** `~/Library/Application Support/Claude/claude_desktop_config.json`  
-* **Windows:** `%APPDATA%\Claude\claude_desktop_config.json`  
-* **Linux:** `~/.config/Claude/claude_desktop_config.json`
+在 `claude_desktop_config.json` 中添加：
 
 ```json
 {
@@ -70,32 +57,26 @@ bunx x-intel-mcp
 }
 ```
 
+### 3. Cursor IDE / Windsurf
+
+在 Cursor 设置 -> Features -> MCP Servers 中添加：
+
+- **Name**: `x-intel`
+- **Type**: `command`
+- **Command**: `npx -y x-intel-mcp`
+
 ---
 
-## 🛠️ 可用工具
+## 🛠 工具列表
 
-### 1. `x_search`
-通过关键词或话题标签搜索公开推文。
-
-```json
-{
-  "query": "Rust MCP server",
-  "limit": 10
-}
-```
-
-### 2. `x_profile`
-获取特定公开用户的最新推文。
-
-```json
-{
-  "handle": "karpathy",
-  "limit": 5
-}
-```
+| 工具名称 | 参数 | 说明 |
+| :--- | :--- | :--- |
+| `x_search` | `query` (字符串), `limit` (数字) | 按关键词搜索推特最新内容。 |
+| `x_crypto_sentiment` | `ticker` (字符串，如 `SOL`), `limit` (数字) | 汇总代币标签推文并计算情绪多空评分。 |
+| `x_user_feed` | `username` (字符串), `limit` (数字) | 获取指定推特用户的最新推文。 |
 
 ---
 
 ## 📄 开源协议
 
-[MIT](LICENSE) © 2026 [Ali Cent (sosal123tyu1)](https://github.com/sosal123tyu1)
+MIT © [Ali Cent](https://github.com/sosal123tyu1)

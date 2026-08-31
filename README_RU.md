@@ -1,63 +1,50 @@
+# x-intel-mcp ⚡ Бессерверный движок разведки X/Twitter и анализа крипто-сентимента для AI-агентов
+
 <div align="center">
 
-# ⚡ x-intel-mcp
+[![NPM Version](https://img.shields.io/npm/v/x-intel-mcp?color=blue&style=for-the-badge&logo=npm)](https://www.npmjs.com/package/x-intel-mcp)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreen?style=for-the-badge&logo=githubactions)](https://github.com/sosal123tyu1/x-intel-mcp/actions)
+[![MCP Standard](https://img.shields.io/badge/MCP-Standard%201.0-blueviolet?style=for-the-badge)](https://modelcontextprotocol.io)
+[![Twitter Stars](https://img.shields.io/github/stars/sosal123tyu1/x-intel-mcp?style=for-the-badge&logo=github)](https://github.com/sosal123tyu1/x-intel-mcp/stargazers)
 
-**Бесплатный MCP-сервер для поиска и сбора информации в X/Twitter для AI-агентов**  
-*Model Context Protocol (MCP) сервер для Claude Desktop, Cursor, Pi и любых MCP-клиентов.*
+**Высокопроизводительный Model Context Protocol (MCP) сервер, предоставляющий AI-агентам (Claude Code, Cursor, Pi, Windsurf) прямой доступ к поиску в Twitter/X, анализу тикеров (`$SOL`, `$BTC`), отслеживанию инфлюенсеров и скорингу настроений без ключей API.**
 
-[![NPM Version](https://img.shields.io/npm/v/x-intel-mcp?style=flat-square&color=indigo)](https://www.npmjs.com/package/x-intel-mcp)
-[![NPM Downloads](https://img.shields.io/npm/dm/x-intel-mcp?style=flat-square&color=blue)](https://www.npmjs.com/package/x-intel-mcp)
-[![License: MIT](https://img.shields.io/badge/License-MIT-emerald.svg?style=flat-square)](LICENSE)
-[![MCP Compatible](https://img.shields.io/badge/MCP-1.0-8A2BE2.svg?style=flat-square)](https://modelcontextprotocol.io)
-[![Runtime: Node / Bun](https://img.shields.io/badge/Runtime-Node%20%7C%20Bun-orange.svg?style=flat-square)](https://bun.sh)
-[![Zero Config](https://img.shields.io/badge/API_Keys-Не_требуются-success.svg?style=flat-square)](#)
-
-[English](README.md) • [Русский](README_RU.md) • [中文](README_ZH.md)
+[English](README.md) | [Русский](README_RU.md) | [中文](README_ZH.md)
 
 </div>
 
 ---
 
-## 🚀 Зачем нужен x-intel-mcp?
+## ⚡ Зачем нужен x-intel-mcp?
 
-Официальный API X/Twitter стоит от **$100 в месяц** и имеет жесткие лимиты. Большинству AI-агентов нужен лишь доступ к публичным обсуждениям, трендам и поиску постов без необходимости платить за API и вставлять ключи в каждый промпт.
+Официальный Twitter API v2 стоит от **$100 до $5,000 в месяц** и требует корпоративной верификации.
 
-`x-intel-mcp` — легковесный локальный MCP-сервер, работающий через `stdio`. Он подключает вашего AI-ассистента к открытым данным X напрямую без авторизации с использованием ротации публичных зеркал.
+`x-intel-mcp` дает вашим AI-агентам структурированный доступ к живому поиску в X, вирусным тредам, настроениям по токенам и альфа-каналам **без API-ключей, подписок и ограничений**.
+
+### 🌟 Ключевые возможности
+
+- 🔍 **Поиск по ключевым словам (`x_search`)**: Мгновенный поиск свежих твитов, обсуждений и тредов.
+- 🪙 **Анализатор крипто-тикеров (`x_crypto_sentiment`)**: Автоматический скоринг по `$SOL`, `$BTC`, `$ETH`, мемкоинам и расчет бычьего/медвежьего индекса.
+- 👤 **Парсер профилей и инфлюенсеров (`x_user_feed`)**: Получение последних постов и альфа-сигналов из любых аккаунтов.
+- ⚡ **Нулевая настройка**: Готов к работе за 1 секунду через `npx x-intel-mcp` или `bunx x-intel-mcp`.
+- 🔌 **Универсальный стандарт MCP**: 100% совместим с Claude Code CLI, Claude Desktop, Cursor IDE, Windsurf и Pi Agent.
 
 ---
 
-## ✨ Возможности
+## 🚀 Быстрый старт (1 минута)
 
-- 🆓 **0 рублей за API** — работает напрямую через открытые syndication-эндпоинты и зеркала.
-- ⚡ **Мгновенный ответ** — легковесный рантайм на Bun / Node.js.
-- 🧩 **Стандарт MCP 1.0** — поддержка **Claude Desktop**, **Cursor IDE**, **Pi**, **Windsurf**.
-- 🛡️ **Приватность** — запросы идут локально с вашего компьютера, без сторонних прокси.
+### 1. Claude Code CLI
 
----
-
-## 📦 Быстрый запуск
-
-### Через `npx` (без установки)
+Добавьте `x-intel-mcp` в конфигурацию Claude Code:
 
 ```bash
-npx x-intel-mcp
+claude mcp add x-intel -- npx x-intel-mcp
 ```
 
-### Через `bunx`
+### 2. Claude Desktop
 
-```bash
-bunx x-intel-mcp
-```
-
----
-
-## ⚙️ Настройка в Claude Desktop
-
-Добавьте конфигурацию в `claude_desktop_config.json`:
-
-* **macOS:** `~/Library/Application Support/Claude/claude_desktop_config.json`  
-* **Windows:** `%APPDATA%\Claude\claude_desktop_config.json`  
-* **Linux:** `~/.config/Claude/claude_desktop_config.json`
+Добавьте в ваш `claude_desktop_config.json`:
 
 ```json
 {
@@ -70,32 +57,43 @@ bunx x-intel-mcp
 }
 ```
 
+### 3. Cursor IDE / Windsurf
+
+В настройках Cursor Settings -> Features -> MCP Servers:
+
+- **Name**: `x-intel`
+- **Type**: `command`
+- **Command**: `npx -y x-intel-mcp`
+
 ---
 
-## 🛠️ Доступные инструменты
+## 🛠 Доступные MCP инструменты
 
-### 1. `x_search`
-Поиск публичных твитов по ключевому слову или хештегу.
+| Имя инструмента | Аргументы | Описание |
+| :--- | :--- | :--- |
+| `x_search` | `query` (строка), `limit` (число) | Поиск твитов, обсуждений и ссылок по ключевым словам в реальном времени. |
+| `x_crypto_sentiment` | `ticker` (строка, напр. `SOL`), `limit` (число) | Сбор кэштегов и вычисление сентимент-скора (Strongly Bullish → Strongly Bearish). |
+| `x_user_feed` | `username` (строка), `limit` (число) | Лента последних постов и реплаев любого публичного профиля Twitter. |
 
-```json
-{
-  "query": "Rust MCP server",
-  "limit": 10
-}
-```
+---
 
-### 2. `x_profile`
-Получение последних постов из профиля пользователя.
+## 💻 Прямой запуск через CLI
 
-```json
-{
-  "handle": "karpathy",
-  "limit": 5
-}
+Вы можете использовать `x-intel-mcp` прямо из терминала без MCP:
+
+```bash
+# Поиск в реальном времени
+npx x-intel-mcp search "Claude 3.7"
+
+# Анализ сентимента токена
+npx x-intel-mcp sentiment "SOL"
+
+# Чтение профиля
+npx x-intel-mcp user "sama"
 ```
 
 ---
 
 ## 📄 Лицензия
 
-[MIT](LICENSE) © 2026 [Ali Cent (sosal123tyu1)](https://github.com/sosal123tyu1)
+MIT © [Ali Cent](https://github.com/sosal123tyu1)
