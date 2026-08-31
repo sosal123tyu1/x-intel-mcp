@@ -5,7 +5,9 @@
 **面向 AI Agent 的免费 X/Twitter 社交情报 MCP 服务器**  
 *适用于 Claude Desktop、Cursor、Pi 以及任何 MCP 客户端的 Model Context Protocol 服务器。*
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](LICENSE)
+[![NPM Version](https://img.shields.io/npm/v/x-intel-mcp?style=flat-square&color=indigo)](https://www.npmjs.com/package/x-intel-mcp)
+[![NPM Downloads](https://img.shields.io/npm/dm/x-intel-mcp?style=flat-square&color=blue)](https://www.npmjs.com/package/x-intel-mcp)
+[![License: MIT](https://img.shields.io/badge/License-MIT-emerald.svg?style=flat-square)](LICENSE)
 [![MCP Compatible](https://img.shields.io/badge/MCP-1.0-8A2BE2.svg?style=flat-square)](https://modelcontextprotocol.io)
 [![Runtime: Node / Bun](https://img.shields.io/badge/Runtime-Node%20%7C%20Bun-orange.svg?style=flat-square)](https://bun.sh)
 [![Zero Config](https://img.shields.io/badge/API_Keys-无需密钥-success.svg?style=flat-square)](#)
@@ -20,7 +22,7 @@
 
 X/Twitter 官方 API 每月起步价为 **$100**，并且有严格的调用频率限制。大多数 AI Agent 仅需检索公开讨论、开发者动态或关键词推文，无需为每个 Prompt 购买昂贵的 API Key。
 
-`x-intel-mcp` 是一个轻量级本地 MCP 服务器，通过 `stdio` 协议运行。它能将您的 AI 助手直接连接到公开的社交情报源，无需任何身份验证。
+`x-intel-mcp` 是一个轻量级本地 MCP 服务器，通过 `stdio` 协议运行。它能将您的 AI 助手直接连接到公开的社交情报源，无需任何身份验证，并支持多镜像节点故障转移。
 
 ---
 
@@ -96,4 +98,4 @@ bunx x-intel-mcp
 
 ## 📄 开源协议
 
-MIT © [sosal123tyu1](https://github.com/sosal123tyu1)
+[MIT](LICENSE) © 2026 [Ali Cent (sosal123tyu1)](https://github.com/sosal123tyu1)
