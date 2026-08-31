@@ -5,12 +5,14 @@
 **Zero-fee X/Twitter & Social Intelligence for AI Agents**  
 *Model Context Protocol (MCP) Server for Claude Desktop, Cursor, Pi, and any MCP client.*
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](LICENSE)
+[![NPM Version](https://img.shields.io/npm/v/x-intel-mcp?style=flat-square&color=indigo)](https://www.npmjs.com/package/x-intel-mcp)
+[![NPM Downloads](https://img.shields.io/npm/dm/x-intel-mcp?style=flat-square&color=blue)](https://www.npmjs.com/package/x-intel-mcp)
+[![License: MIT](https://img.shields.io/badge/License-MIT-emerald.svg?style=flat-square)](LICENSE)
 [![MCP Compatible](https://img.shields.io/badge/MCP-1.0-8A2BE2.svg?style=flat-square)](https://modelcontextprotocol.io)
 [![Runtime: Node / Bun](https://img.shields.io/badge/Runtime-Node%20%7C%20Bun-orange.svg?style=flat-square)](https://bun.sh)
 [![Zero Config](https://img.shields.io/badge/API_Keys-None_Required-success.svg?style=flat-square)](#)
 
-[Features](#-features) • [Quickstart](#-quickstart) • [Claude Desktop Setup](#-claude-desktop-setup) • [Tools](#-available-tools) • [Architecture](#-architecture)
+[English](README.md) • [Русский](README_RU.md) • [中文](README_ZH.md)
 
 </div>
 
@@ -20,7 +22,7 @@
 
 X/Twitter official API starts at **$100/mo** with heavy rate limits. Most AI agents just need to read public sentiment, recent developer discussions, or search keywords without passing expensive API keys into every prompt.
 
-`x-intel-mcp` is a lightweight, zero-configuration MCP server running locally via `stdio`. It connects your favorite AI agent directly to live public posts without authentication.
+`x-intel-mcp` is a lightweight, zero-configuration MCP server running locally via `stdio`. It connects your favorite AI agent directly to live public posts without authentication using multi-mirror syndication fallback.
 
 ---
 
@@ -35,7 +37,7 @@ X/Twitter official API starts at **$100/mo** with heavy rate limits. Most AI age
 
 ## 📦 Quickstart
 
-### Run with `npx` (No installation needed)
+### Run directly with `npx` (No global install required)
 
 ```bash
 npx x-intel-mcp
@@ -75,7 +77,7 @@ Restart Claude Desktop, and the tools will automatically appear in your chat int
 ## 🛠️ Available Tools
 
 ### 1. `x_search`
-Search public posts on X by keyword or hashtag.
+Search live public posts on X by keyword, query, or hashtag.
 
 ```json
 {
@@ -85,7 +87,7 @@ Search public posts on X by keyword or hashtag.
 ```
 
 ### 2. `x_profile`
-Fetch the latest public posts from a specific X user.
+Fetch the latest public posts from a specific X user handle.
 
 ```json
 {
@@ -128,4 +130,4 @@ bun run dev
 
 ## 📄 License
 
-MIT © [sosal123tyu1](https://github.com/sosal123tyu1)
+[MIT](LICENSE) © 2026 [Ali Cent (sosal123tyu1)](https://github.com/sosal123tyu1)
